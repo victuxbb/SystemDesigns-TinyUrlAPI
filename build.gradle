@@ -1,18 +1,23 @@
 buildscript {
 	ext {
 		springBootVersion = '2.1.2.RELEASE'
+		dockerComposePluginVersion = '0.7.1'
+
 	}
 	repositories {
 		mavenCentral()
+		gradlePluginPortal()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath group: "com.avast.gradle.docker-compose", name: "com.avast.gradle.docker-compose.gradle.plugin", version: dockerComposePluginVersion
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'docker-compose'
 
 group = 'com.victuxbb.systemdesigns'
 version = '0.0.1-SNAPSHOT'
@@ -27,4 +32,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
+}
+
+dockerCompose.isRequiredBy(test)
+dockerCompose {
+	useComposeFiles = ['docker-compose.yml']
+	startedServices = ['cassandra']
+	waitForTcpPorts = true
+	captureContainersOutput = false
+	stopContainers = true
+	removeContainers = true
+	buildBeforeUp = false
 }

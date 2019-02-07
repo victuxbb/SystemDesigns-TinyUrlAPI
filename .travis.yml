@@ -1,0 +1,15 @@
+dist: trusty
+
+language: java
+
+branches:
+  only:
+    - master
+
+install:
+  - sudo start-docker-daemon
+jdk:
+  - oraclejdk8
+
+script:
+  - ./gradlew build --stacktrace
