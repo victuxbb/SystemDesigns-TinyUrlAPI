@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  cassandra:
+    image: cassandra
+    ports:
+      - 9042:9042
+    environment:
+      CASSANDRA_BROADCAST_ADDRESS: 127.0.0.1
+    volumes:
+      - "./src/main/resources/cassandra-init.sh:/cassandra-init.sh"
+      - "./src/main/resources/import.cql:/import.cql"
+    command: "sh /cassandra-init.sh"

@@ -1,0 +1,8 @@
+spring:
+  data:
+    cassandra:
+      port: 9042
+      username: cassandra
+      password: cassandra
+      keyspace-name: tinyurl
+      schema-action: create_if_not_exists
