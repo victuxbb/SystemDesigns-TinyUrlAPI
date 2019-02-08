@@ -6,8 +6,6 @@ branches:
   only:
     - master
 
-install:
-  - sudo start-docker-daemon
 jdk:
   - oraclejdk8
 
