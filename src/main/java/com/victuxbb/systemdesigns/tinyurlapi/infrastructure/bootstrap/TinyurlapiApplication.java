@@ -1,4 +1,4 @@
-package com.victuxbb.systemdesigns.tinyurlapi;
+package com.victuxbb.systemdesigns.tinyurlapi.infrastructure.bootstrap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
