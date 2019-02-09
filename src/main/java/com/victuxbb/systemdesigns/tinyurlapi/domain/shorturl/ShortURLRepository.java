@@ -1,6 +1,6 @@
 package com.victuxbb.systemdesigns.tinyurlapi.domain.shorturl;
 
-import com.victuxbb.systemdesigns.tinyurlapi.domain.urlkey.URLKey;
+import com.victuxbb.systemdesigns.tinyurlapi.domain.kgs.URLKey;
 import reactor.core.publisher.Mono;
 
 public interface ShortURLRepository {

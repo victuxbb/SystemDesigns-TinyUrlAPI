@@ -1,4 +1,4 @@
-package com.victuxbb.systemdesigns.tinyurlapi.domain.urlkey;
+package com.victuxbb.systemdesigns.tinyurlapi.domain.kgs;
 
 public class URLKey {
     private String key;
