@@ -1,7 +1,7 @@
 package com.victuxbb.systemdesigns.tinyurlapi.application;
 
 import com.victuxbb.systemdesigns.tinyurlapi.domain.shorturl.ShortURLRepository;
-import com.victuxbb.systemdesigns.tinyurlapi.domain.shorturl.ShortUrl;
+import com.victuxbb.systemdesigns.tinyurlapi.domain.shorturl.ShortURL;
 import com.victuxbb.systemdesigns.tinyurlapi.domain.kgs.KGSRepository;
 import reactor.core.publisher.Mono;
 
@@ -14,7 +14,8 @@ public class CreateShortURL {
         this.kgsRepository = kgsRepository;
     }
 
-    public Mono<ShortUrl> create(ShortURLRequest shortUrlRequest){
-        return null;
+    public Mono<ShortURL> create(ShortURLRequest shortUrlRequest) {
+        return kgsRepository.getUniqueKey()
+                .flatMap(urlKey -> shortURLRepository.save(new ShortURL(urlKey.getKey(), shortUrlRequest.getOriginalURL())));
     }
 }

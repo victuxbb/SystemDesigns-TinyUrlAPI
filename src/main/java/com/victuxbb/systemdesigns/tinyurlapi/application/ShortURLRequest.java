@@ -6,4 +6,8 @@ public class ShortURLRequest {
     public ShortURLRequest(String originalURL) {
         this.originalURL = originalURL;
     }
+
+    public String getOriginalURL() {
+        return originalURL;
+    }
 }
