@@ -6,3 +6,6 @@ spring:
       password: cassandra
       keyspace-name: tinyurl
       schema-action: create_if_not_exists
+
+server:
+  port: 8000
