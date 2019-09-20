@@ -1,6 +1,7 @@
 package com.victuxbb.systemdesigns.tinyurlapi.infrastructure.datasource;
 
 import com.victuxbb.systemdesigns.tinyurlapi.domain.shorturl.ShortURL;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
@@ -11,11 +12,15 @@ import java.time.LocalDateTime;
 @Table("url")
 public class URL {
     @PrimaryKeyColumn(name = "hash", type = PrimaryKeyType.PARTITIONED)
-    private final String hash;
+    @Id
+    private String hash;
     @Column("original_url")
-    private final String originalURL;
+    private String originalURL;
     @Column("creation_date")
-    private final LocalDateTime creationDate;
+    private LocalDateTime creationDate;
+
+    public URL() {
+    }
 
     URL(ShortURL shortUrl) {
         hash = shortUrl.getHash();

@@ -1,6 +1,16 @@
 version: '3.4'
 
 services:
+
+  tinyurl:
+    build: .
+    ports:
+      - 8000:8000
+    links:
+      - cassandra
+      - kgs
+
+
   cassandra:
     image: cassandra
     ports:
@@ -11,3 +21,14 @@ services:
       - "./src/main/resources/cassandra-init.sh:/cassandra-init.sh"
       - "./src/main/resources/import.cql:/import.cql"
     command: "sh /cassandra-init.sh"
+
+  redis:
+    image: redis:alpine
+
+  kgs:
+    image: victuxbb/tinyurlkgs
+    environment:
+      KGS_REDIS_HOST: redis
+      KGS_KEYS_LENGTH: 3
+    links:
+      - redis

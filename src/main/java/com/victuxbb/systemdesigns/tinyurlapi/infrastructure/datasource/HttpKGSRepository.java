@@ -22,7 +22,7 @@ public class HttpKGSRepository implements KGSRepository {
   @Override public Mono<URLKey> getUniqueKey() {
     return Mono.fromCallable(
         () -> restTemplate.postForEntity(
-            "http://localhost:8080/keys_request",
+            "http://kgs:8080/keys_request",
             new HttpEntity<>(new KGSRequest(1)),
             String[].class
         )

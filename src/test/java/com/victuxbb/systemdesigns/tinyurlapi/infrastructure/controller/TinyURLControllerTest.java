@@ -2,9 +2,9 @@ package com.victuxbb.systemdesigns.tinyurlapi.infrastructure.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.victuxbb.systemdesigns.tinyurlapi.domain.kgs.KGSRepository;
 import com.victuxbb.systemdesigns.tinyurlapi.domain.kgs.URLKey;
 import com.victuxbb.systemdesigns.tinyurlapi.infrastructure.bootstrap.TinyURLAPIApplication;
-import com.victuxbb.systemdesigns.tinyurlapi.infrastructure.datasource.InMemoryKGSRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class TinyURLControllerTest {
     private ObjectMapper objectMapper;
 
     @SpyBean
-    private InMemoryKGSRepository kgsRepository;
+    private KGSRepository kgsRepository;
 
     @Test
     public void createTinyURL() throws JsonProcessingException {
